@@ -65,7 +65,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\PlayerDeath.cs" />
-    <Compile Include="Assets\Scripts\MusicBehaviour.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventHandler.cs" />
     <Compile Include="Assets\MathB.cs" />
     <Compile Include="Assets\Scripts\WallFollow.cs" />
@@ -85,7 +84,6 @@
     <Compile Include="Assets\SpectrumAnalyzer.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ObjectSpin.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_PhoneNumberValidator.cs" />
-    <Compile Include="Assets\Scripts\PlayerCollision.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexJitter.cs" />
     <Compile Include="Assets\AnalyzerSettings.cs" />
     <Compile Include="Assets\Scripts\MovePlayer.cs" />

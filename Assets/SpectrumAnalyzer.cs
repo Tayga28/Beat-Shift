@@ -19,6 +19,10 @@ public class SpectrumAnalyzer : MonoBehaviour
     private List<GameObject> pillars; //ref pillars to scale/move with music
     private GameObject folder;
     private bool isBuilding; //Prevents multi-calls and update while building.
+    public float beatThreshold = 0.1f; // Threshold for detecting a beat
+    private bool isBeatDetected; // Track if a beat is detected
+    public float beatInterval = 0.5f; // Minimum interval between beats
+    private float lastBeatTime; // Track the last beat time
 
 
     void Start()
@@ -78,7 +82,19 @@ public class SpectrumAnalyzer : MonoBehaviour
             }
             pillars[i].transform.position = pos;
         }
+
+        for (int i = 0; i < spectrum.Length; i++)
+        {
+            if (spectrum[i] > beatThreshold && Time.time - lastBeatTime > beatInterval)
+            {
+                isBeatDetected = true; // A beat is detected
+                lastBeatTime = Time.time; // Update the last beat time
+                break;
+            }
+        }
     }
+
+    public bool IsBeatDetected => isBeatDetected; // Public property for other classes to access
 
     /// <summary>
     /// Called by UI slider onValue changed

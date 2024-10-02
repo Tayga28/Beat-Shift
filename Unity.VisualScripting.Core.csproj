@@ -90,8 +90,8 @@
     <Compile Include="Library\PackageCache\com.unity.visualscripting@1.9.4\Runtime\VisualScripting.Core\Dependencies\FullSerializer\Converters\fsEnumConverter.cs" />
     <Compile Include="Library\PackageCache\com.unity.visualscripting@1.9.4\Runtime\VisualScripting.Core\Reflection\Optimization\StaticPropertyAccessor.cs" />
     <Compile Include="Library\PackageCache\com.unity.visualscripting@1.9.4\Runtime\VisualScripting.Core\Variables\ApplicationVariables.cs" />
-    <Compile Include="Library\PackageCache\com.unity.visualscripting@1.9.4\Runtime\VisualScripting.Core\Reflection\Operators\AndHandler.cs" />
     <Compile Include="Library\PackageCache\com.unity.visualscripting@1.9.4\Runtime\VisualScripting.Core\Reflection\Optimization\StaticFunctionInvoker_0.cs" />
+    <Compile Include="Library\PackageCache\com.unity.visualscripting@1.9.4\Runtime\VisualScripting.Core\Reflection\Operators\AndHandler.cs" />
     <Compile Include="Library\PackageCache\com.unity.visualscripting@1.9.4\Runtime\VisualScripting.Core\Dependencies\AssemblyQualifiedNameParser\ParsedAssemblyQualifiedName.cs" />
     <Compile Include="Library\PackageCache\com.unity.visualscripting@1.9.4\Runtime\VisualScripting.Core\Reflection\Operators\LogicalNegationHandler.cs" />
     <Compile Include="Library\PackageCache\com.unity.visualscripting@1.9.4\Runtime\VisualScripting.Core\Reflection\Optimization\IOptimizedInvoker.cs" />

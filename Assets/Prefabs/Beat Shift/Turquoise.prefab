@@ -184,6 +184,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fragmentID: 1
+  defaultMaterial: {fileID: 2100000, guid: 61e58970809a0e248a3d3c1e151dc10c, type: 2}
+  blueMaterial: {fileID: 2100000, guid: b1ef0329afad02645bcfbb1052ded20e, type: 2}
+  pinkMaterial: {fileID: 2100000, guid: c6056c7dd4907b84394343605a1ae9a4, type: 2}
+  revealDistance: 26
+  isBlue: 1
+  isPink: 0
 --- !u!65 &2794512433192146660
 BoxCollider:
   m_ObjectHideFlags: 0
