@@ -1631,8 +1631,10 @@ MonoBehaviour:
   currentPlatform: {fileID: 0}
   isGrounded: 0
   isAlive: 0
+  isInvincible: 0
   cs: {fileID: 1632315665}
   died: {fileID: 2081987022}
+  currentGroundTag: 
 --- !u!1 &1903795896
 GameObject:
   m_ObjectHideFlags: 0
@@ -1707,8 +1709,8 @@ MonoBehaviour:
   - {fileID: 2653159642009981638, guid: bfe1f682e2913ca46977221e94f45418, type: 3}
   player: {fileID: 1632315666}
   xPos: 0
-  yPos: -2
-  zPos: 5
+  yPos: -3.5
+  zPos: 6
   zGapIncreaseRate: 1.5
   levelPartsSpawned: 0
 --- !u!4 &2081987021
@@ -1986,8 +1988,8 @@ GameObject:
   - component: {fileID: 4397382835813521120}
   - component: {fileID: 7896704883729475897}
   - component: {fileID: 6075014185801807377}
-  - component: {fileID: 8661176777755860223}
   - component: {fileID: 8661176777755860224}
+  - component: {fileID: 8661176777755860225}
   m_Layer: 0
   m_Name: StartPlatform
   m_TagString: Untagged
@@ -2052,21 +2054,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3061607576977316689}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8661176777755860223
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6215624273054786414}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6235e52233724ab42b7bb0a4f2f4e7be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fragmentID: 0
-  blueMaterial: {fileID: 2100000, guid: b1ef0329afad02645bcfbb1052ded20e, type: 2}
-  pinkMaterial: {fileID: 2100000, guid: c6056c7dd4907b84394343605a1ae9a4, type: 2}
 --- !u!65 &8661176777755860224
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2088,6 +2075,24 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: -0.000000029802322}
+--- !u!114 &8661176777755860225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6215624273054786414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6235e52233724ab42b7bb0a4f2f4e7be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fragmentID: 0
+  isBlue: 1
+  isPink: 0
+  enableCameraShake: 1
+  shakeDuration: 0.2
+  shakeMagnitude: 0.1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

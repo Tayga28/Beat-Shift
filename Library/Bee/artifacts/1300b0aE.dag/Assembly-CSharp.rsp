@@ -362,6 +362,7 @@
 "Assets/MathB.cs"
 "Assets/Scripts/Beat Shift/ColourShift.cs"
 "Assets/Scripts/BlocksHandler.cs"
+"Assets/Scripts/Camera/ScreenShake.cs"
 "Assets/Scripts/CameraFollow.cs"
 "Assets/Scripts/ExpandingBox.cs"
 "Assets/Scripts/GameManager.cs"

@@ -11,27 +11,24 @@ public class PlayerMovement : MonoBehaviour
     public float maxSpeed;
     public float jumpForce;
     public float fallDistanceBeforeDeath = 10f;
-    public GameObject currentPlatform;  
+    public GameObject currentPlatform;
     public bool isGrounded;
     public bool isAlive;
+    public bool isInvincible;
     public ColourShift cs;
     public PlayerDeath died;
-    private string currentGroundTag = ""; // Store the tag of the ground we're on
-    
-    //public MusicBehaviour music;
-    // Start is called before the first frame update
+    [SerializeField] private string currentGroundTag = ""; // Store the tag of the ground we're on
+
     void Start()
     {
         isAlive = true;
         maxSpeed = Mathf.Min(forwardSpeed, maxSpeed);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.M) & isGrounded)
+        if (Input.GetKeyDown(KeyCode.M) && isGrounded)
         {
-            //Debug.Log("jumped");
             rb.AddForce(0, 1 * jumpForce, 0, ForceMode.Impulse);
             isGrounded = false;
         }
@@ -39,13 +36,12 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-
         float horizontalMove = Input.GetAxis("Horizontal");
         Vector3 velocity = rb.velocity;
-        
+
         rb.AddForce(0, 0, forwardSpeed);
         rb.AddForce(horizontalMove * sideSpeed, 0, 0);
-        
+
         if (velocity.z > maxSpeed)
         {
             velocity.z = maxSpeed;
@@ -60,38 +56,53 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-     // Check if player and ground colors mismatch and trigger death
     private void CheckColorMismatch()
     {
-        if (currentGroundTag == "Blue" && cs.colourIndex != 0)
+        Debug.Log($"Current Ground Tag: {currentGroundTag}, Player Colour Index: {cs.colourIndex}");
+        
+        if (!isInvincible) // Only check when not invincible
         {
-            maxSpeed = 0;
-            isAlive = false;
-            died.TriggerDeath();
-        }
-        else if (currentGroundTag == "Pink" && cs.colourIndex != 1)
-        {
-            maxSpeed = 0;
-            isAlive = false;
-            died.TriggerDeath();
+            // Check for color mismatches
+            if (currentGroundTag == "Blue" && cs.colourIndex != 0)
+            {
+                Debug.Log("Player is pink on blue ground. Triggering death.");
+                maxSpeed = 0;
+                isAlive = false;
+                died.TriggerDeath();
+            }
+            else if (currentGroundTag == "Pink" && cs.colourIndex != 1)
+            {
+                Debug.Log("Player is blue on pink ground. Triggering death.");
+                maxSpeed = 0;
+                isAlive = false;
+                died.TriggerDeath();
+            }
         }
     }
 
-    // OnCollisionEnter to detect ground color
+    public void UpdateGroundTag(string newTag)
+    {
+        currentGroundTag = newTag;
+    }
+
     void OnCollisionEnter(Collision other)
     {
         isGrounded = true;
 
         if (!isPlaytesting)
         {
-            // Store the tag of the object we're colliding with
-            if (other.gameObject.CompareTag("Blue") || other.gameObject.CompareTag("Pink"))
+            if (other.gameObject.CompareTag("Blue"))
             {
-                currentGroundTag = other.gameObject.tag;
-
-                // Initial check on collision
+                UpdateGroundTag("Blue");
+                if (!isInvincible) cs.colourIndex = 0; // Set player color index only if not invincible
                 CheckColorMismatch();
-            } 
+            }
+            else if (other.gameObject.CompareTag("Pink"))
+            {
+                UpdateGroundTag("Pink");
+                if (!isInvincible) cs.colourIndex = 1; // Set player color index only if not invincible
+                CheckColorMismatch();
+            }
 
             if (other.gameObject.CompareTag("DeathObject"))
             {
@@ -101,7 +112,31 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    // OnCollisionExit to clear the ground tag when player leaves the surface
+    // OnCollisionStay to continuously check collision and tag updates
+    void OnCollisionStay(Collision other)
+    {
+        if (!isPlaytesting)
+        {
+            // Continuously check for color changes while in contact
+            if (other.gameObject.CompareTag("Blue"))
+            {
+                UpdateGroundTag("Blue");
+                CheckColorMismatch(); // Always check for mismatches
+            }
+            else if (other.gameObject.CompareTag("Pink"))
+            {
+                UpdateGroundTag("Pink");
+                CheckColorMismatch(); // Always check for mismatches
+            }
+
+            if (other.gameObject.CompareTag("DeathObject"))
+            {
+                isAlive = false;
+                died.TriggerDeath();
+            }
+        }
+    }
+
     void OnCollisionExit(Collision other)
     {
         isGrounded = false;
@@ -110,5 +145,4 @@ public class PlayerMovement : MonoBehaviour
             currentGroundTag = "";
         }
     }
-
 }

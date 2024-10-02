@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
@@ -12,7 +13,7 @@ public class CameraFollow : MonoBehaviour
     public float targetFOV = 40f;
     private Camera camera;
 
-    void Start()
+    private void Start()
     {
         camera = GetComponent<Camera>();
     }
@@ -21,13 +22,43 @@ public class CameraFollow : MonoBehaviour
     {
         // Follow the target position smoothly
         Vector3 desiredPosition = target.position + offset;
-        Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
-        transform.position = smoothedPosition;
+        transform.position = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
     }
 
     public void TriggerZoomAndTilt()
     {
         StartCoroutine(ZoomAndTilt());
+    }
+
+    // Method to trigger camera shake
+    public void TriggerShake(float duration, float magnitude)
+    {
+        StartCoroutine(Shake(duration, magnitude));
+    }
+
+    private IEnumerator Shake(float duration, float magnitude)
+    {
+        Vector3 originalPosition = transform.position; // Save original position
+
+        float elapsed = 0.0f;
+
+        while (elapsed < duration)
+        {
+            // Calculate shake offsets based on the original position
+            float x = Random.Range(-1f, 1f) * magnitude;
+            float y = Random.Range(-1f, 1f) * magnitude;
+
+            // Update the position directly with the desired position and shake offsets
+            Vector3 desiredPosition = target.position + offset + new Vector3(x, y, 0);
+            transform.position = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
+
+            elapsed += Time.deltaTime; // Increment elapsed time
+
+            yield return null; // Wait for next frame
+        }
+
+        // Ensure the camera ends at the desired position
+        transform.position = target.position + offset; // Reset to desired position
     }
 
     private IEnumerator ZoomAndTilt()
@@ -52,7 +83,7 @@ public class CameraFollow : MonoBehaviour
         }
 
         // Ensure the camera ends at the target offset and rotation
-        //offset = zoomedOffset;
-        //transform.rotation = Quaternion.Euler(tiltedRotation);
+        offset = zoomedOffset;
+        transform.rotation = Quaternion.Euler(tiltedRotation);
     }
 }

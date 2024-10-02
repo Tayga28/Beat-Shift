@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2653159642009981638}
   m_Layer: 0
   m_Name: Pink
-  m_TagString: Pink
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 3882511344878465610}
   m_Layer: 0
   m_Name: EndPosition
-  m_TagString: Pink
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -128,7 +128,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c6056c7dd4907b84394343605a1ae9a4, type: 2}
+  - {fileID: 2100000, guid: 61e58970809a0e248a3d3c1e151dc10c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -184,12 +184,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fragmentID: 2
-  defaultMaterial: {fileID: 2100000, guid: 61e58970809a0e248a3d3c1e151dc10c, type: 2}
-  blueMaterial: {fileID: 2100000, guid: b1ef0329afad02645bcfbb1052ded20e, type: 2}
-  pinkMaterial: {fileID: 2100000, guid: c6056c7dd4907b84394343605a1ae9a4, type: 2}
-  revealDistance: 26
   isBlue: 0
   isPink: 1
+  enableCameraShake: 1
+  shakeDuration: 0.2
+  shakeMagnitude: 0.1
 --- !u!65 &7178871013222826366
 BoxCollider:
   m_ObjectHideFlags: 0
