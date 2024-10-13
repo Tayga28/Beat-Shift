@@ -17,7 +17,13 @@ public class PlayerMovement : MonoBehaviour
     public bool isInvincible;
     public ColourShift cs;
     public PlayerDeath died;
+    float horizontalMove;
     [SerializeField] private string currentGroundTag = ""; // Store the tag of the ground we're on
+
+    [Header("Mobile Stuff")]
+    public bool moveLeft;
+    public bool moveRight;
+    public bool isMobileControls;
 
     void Start()
     {
@@ -25,8 +31,48 @@ public class PlayerMovement : MonoBehaviour
         maxSpeed = Mathf.Min(forwardSpeed, maxSpeed);
     }
 
+    public void OnPointerDownLeft()
+    {
+        moveLeft = true;
+    }
+
+    public void OnPointerUpLeft()
+    {
+        moveLeft = false;
+    }
+
+    public void OnPointerDownRight()
+    {
+        moveRight = true;
+    }
+
+    public void OnPointerUpRight()
+    {
+        moveRight = false;
+    }
+    private void MovePlayer() // Mobile Controls
+    {
+        if (moveLeft)
+        {
+            horizontalMove = -sideSpeed;
+        }
+        else if (moveRight)
+        {
+            horizontalMove = sideSpeed;
+        }
+        else if (!moveLeft)
+        {
+            horizontalMove = 0;
+        }
+        else if (!moveRight)
+        {
+            horizontalMove = 0;
+        }
+    }
+
     void Update()
     {
+        if (isMobileControls) MovePlayer();
         if (Input.GetKeyDown(KeyCode.M) && isGrounded)
         {
             rb.AddForce(0, 1 * jumpForce, 0, ForceMode.Impulse);
@@ -36,11 +82,12 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        float horizontalMove = Input.GetAxis("Horizontal");
+        if (!isMobileControls) horizontalMove = Input.GetAxis("Horizontal");
         Vector3 velocity = rb.velocity;
 
         rb.AddForce(0, 0, forwardSpeed);
-        rb.AddForce(horizontalMove * sideSpeed, 0, 0);
+        if (!isMobileControls) rb.AddForce(horizontalMove * sideSpeed, 0, 0);
+        if (isMobileControls)  rb.AddForce(horizontalMove, 0, 0);
 
         if (velocity.z > maxSpeed)
         {
@@ -59,7 +106,7 @@ public class PlayerMovement : MonoBehaviour
     private void CheckColorMismatch()
     {
         Debug.Log($"Current Ground Tag: {currentGroundTag}, Player Colour Index: {cs.colourIndex}");
-        
+
         if (!isInvincible) // Only check when not invincible
         {
             // Check for color mismatches
@@ -88,6 +135,7 @@ public class PlayerMovement : MonoBehaviour
     void OnCollisionEnter(Collision other)
     {
         isGrounded = true;
+        CheckColorMismatch();
 
         if (!isPlaytesting)
         {

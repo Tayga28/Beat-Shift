@@ -631,7 +631,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 80
+  field of view: 120
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -657,13 +657,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 334079768}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 1, z: -10}
+  m_LocalRotation: {x: 0.043619405, y: 0, z: 0, w: 0.9990483}
+  m_LocalPosition: {x: -0, y: 2, z: -8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 5, y: 0, z: 0}
 --- !u!114 &334079772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -677,7 +677,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1632315664}
-  offset: {x: 0, y: 1.5, z: -4}
+  offset: {x: 0, y: 2, z: -4}
   smoothSpeed: 90
   zoomDuration: 0.5
   zoomedOffset: {x: 0, y: 0, z: -0.8}
@@ -939,7 +939,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -1019,7 +1019,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 559cc8657b437cb45acc34b1b801d1d2, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 28146aadb1007d5409b4f353b985efee, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -1114,7 +1114,7 @@ Transform:
   m_GameObject: {fileID: 1334402696}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 9.04}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1146,7 +1146,7 @@ MonoBehaviour:
       sampleRate: 2048
     Prefabs:
       CylPrefab: {fileID: 101714, guid: cdf4daedf7c625947a1f96d9c5a9b3f4, type: 3}
-      BoxPrefab: {fileID: 162950, guid: af56f3c2aeb28764897d9ecd9ad73568, type: 3}
+      BoxPrefab: {fileID: 162950, guid: 7f2727ce1a5a9d242b7368e8fffbe615, type: 3}
   player: {fileID: 1632315666}
   beatThreshold: 0.1
   beatInterval: 0.5
@@ -1501,7 +1501,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!65 &1632315661
 BoxCollider:
@@ -1583,7 +1583,7 @@ Transform:
   m_GameObject: {fileID: 1632315659}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1621,7 +1621,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb47ab0d86058c54b8a57bc2b99ba292, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPlaytesting: 0
+  isPlaytesting: 1
   rb: {fileID: 1632315660}
   forwardSpeed: 10
   sideSpeed: 35
@@ -1707,6 +1707,8 @@ MonoBehaviour:
   - {fileID: 2653159642009981638, guid: 74dc9de4853673f4c86dd25cd716ee31, type: 3}
   - {fileID: 2653159642009981638, guid: 8e8b0c7c19b29f140b21c8901525e2c2, type: 3}
   - {fileID: 2653159642009981638, guid: bfe1f682e2913ca46977221e94f45418, type: 3}
+  - {fileID: 4223199957786374779, guid: af3fc249da7925c4b87546f1ad6d4b99, type: 3}
+  - {fileID: 4223199957786374779, guid: 3351c32d6e3cca747934dddbf9ea6af0, type: 3}
   player: {fileID: 1632315666}
   xPos: 0
   yPos: -3.5
@@ -1787,7 +1789,7 @@ Transform:
   m_GameObject: {fileID: 1468734560155643521}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: -1, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1987,12 +1989,12 @@ GameObject:
   - component: {fileID: 8661176777755860222}
   - component: {fileID: 4397382835813521120}
   - component: {fileID: 7896704883729475897}
+  - component: {fileID: 8661176777755860225}
   - component: {fileID: 6075014185801807377}
   - component: {fileID: 8661176777755860224}
-  - component: {fileID: 8661176777755860225}
   m_Layer: 0
   m_Name: StartPlatform
-  m_TagString: Untagged
+  m_TagString: Blue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2090,6 +2092,12 @@ MonoBehaviour:
   fragmentID: 0
   isBlue: 1
   isPink: 0
+  revealDistance: 28
+  isChangingColor: 0
+  hasRevealedColor: 0
+  nextToggleTime: 0
+  toggleIntervals: 8
+  toggleDelayAfterReveal: 2
   enableCameraShake: 1
   shakeDuration: 0.2
   shakeMagnitude: 0.1

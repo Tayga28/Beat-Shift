@@ -6,6 +6,7 @@ public class SpectrumFollow : MonoBehaviour
 {
     public Transform target; // The player
     public float smoothSpeed = 0.125f; // Smoothing factor for movement
+    //public Vector3 offset;
 
     private void FixedUpdate() 
     {

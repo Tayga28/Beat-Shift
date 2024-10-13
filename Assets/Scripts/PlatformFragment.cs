@@ -3,21 +3,31 @@ using UnityEngine;
 
 public class PlatformFragment : MonoBehaviour
 {
+    [Header("Platform Identifiers")]
     public int fragmentID; // Unique ID for this platform fragment
     private Color blueColor = new Color(0f, 114f / 255f, 115f / 255f); // Color for blue
     private Color pinkColor = new Color(194f / 255f, 45f / 255f, 107f / 255f); // Color for pink
     public bool isBlue; // Bool to determine if the platform starts as blue
     public bool isPink; // Bool to determine if the platform starts as pink
+
     private PlayerMovement player;
-    private float revealDistance = 28f; // Distance within which the material is revealed
+
+    [Header("Reveal and Shift Values")]
+    [SerializeField] private float revealDistance = 28f; // Distance within which the material is revealed
     private Renderer platformRenderer; // Renderer of the platform
     private Material currentMaterial; // Current material of the platform
-    private bool isChangingColor; // To prevent multiple color changes at once
+    [SerializeField] private bool isChangingColor; // To prevent multiple color changes at once
+    [SerializeField] private bool hasRevealedColor = false; // To track if the color has been revealed already
+    [SerializeField] private float nextToggleTime; // Time for the next color toggle
+    [SerializeField] private float toggleIntervals = 8f;
+    [SerializeField] private float toggleDelayAfterReveal = 2f; // Delay before first color toggle after reveal
+
+    [Header("Camera Shake Values")]
     public bool enableCameraShake = true; // Toggle for playtesting camera shake
     public float shakeDuration = 0.2f; // Duration for the camera shake
     public float shakeMagnitude = 0.1f; // Magnitude of the camera shake
-    private float nextToggleTime; // Time for the next color toggle
-    private float toggleIntervals = 8f;
+
+    [Header("Platform Colour")]
     private Color currentColor; // Store current color
 
     void Start()
@@ -38,41 +48,40 @@ public class PlatformFragment : MonoBehaviour
 
     void Update()
     {
-        //Debug.Log(gameObject.tag);
         // Check if player has a valid current platform
         if (player != null && player.currentPlatform != null)
         {
             // Calculate the distance to the player
             float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
 
-            // If the player is within the reveal distance, reveal the color
-            if (distanceToPlayer < revealDistance)
+            // If the player is within the reveal distance, reveal the color once
+            if (distanceToPlayer < revealDistance && !hasRevealedColor)
             {
                 StartCoroutine(RevealColor());
+            }
 
-                // Check if it's time to toggle color
-                if (Time.time >= nextToggleTime)
-                {
-                    StartCoroutine(ToggleColor());
-                    nextToggleTime += toggleIntervals; // Set the next toggle time
-                }
+            // Only toggle color after revealing is done
+            if (Time.time >= nextToggleTime && hasRevealedColor && !isChangingColor)
+            {
+                nextToggleTime += toggleIntervals + toggleDelayAfterReveal; // Set the next toggle time
+                StartCoroutine(ToggleColor());
             }
         }
     }
 
     private IEnumerator RevealColor()
     {
-        if (!isChangingColor)
+        if (!isChangingColor) // Ensure no reveal overlap
         {
-            isChangingColor = true;
+            isChangingColor = true; // Mark that color is being revealed
 
             // Lerp from black to the original color based on the bools
-            Color targetColor = Color.black; // Start as black
+            Color targetColor = Color.black;
 
             if (isBlue) targetColor = blueColor;
             else if (isPink) targetColor = pinkColor;
 
-            float lerpDuration = 0.5f; // Duration for lerping
+            float lerpDuration = 0.5f;
             float elapsed = 0f;
 
             // Lerp from black to the target color
@@ -83,10 +92,11 @@ public class PlatformFragment : MonoBehaviour
                 yield return null;
             }
 
-            // Ensure the final color is set
-            //currentMaterial.color = targetColor;
+            hasRevealedColor = true; // Mark that the reveal has completed
+            isChangingColor = false; // Allow color toggling now
 
-            //isChangingColor = false; // Allow subsequent reveals
+            // Add a delay before allowing color toggling to start
+            nextToggleTime = Time.time + toggleDelayAfterReveal; // Delay toggle by a few seconds
         }
     }
 
@@ -115,18 +125,12 @@ public class PlatformFragment : MonoBehaviour
         while (elapsed < fadeDuration)
         {
             elapsed += Time.deltaTime;
-            
             currentMaterial.color = Color.Lerp(currentColor, blackColor, elapsed / fadeDuration);
             yield return null;
         }
 
-        // Finish lerping by setting the material color to black
-        //currentMaterial.color = blackColor;
-        //UpdateTag();
-
         // Toggle to the new color
         Color newColor = isBlue ? pinkColor : blueColor;
-
 
         // Fade back to the new color
         elapsed = 0f; // Reset elapsed time for the fade back
