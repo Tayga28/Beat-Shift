@@ -120,6 +120,7 @@
     <Compile Include="Assets\Scripts\Camera\ScreenShake.cs" />
     <Compile Include="Assets\Scripts\SpectrumFollow.cs" />
     <Compile Include="Assets\Scripts\SpawnParts.cs" />
+    <Compile Include="Assets\AudioHandler.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextInfoDebugTool.cs" />
   </ItemGroup>

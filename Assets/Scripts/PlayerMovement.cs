@@ -4,21 +4,36 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [Header("Playtesting")]
     public bool isPlaytesting;
+
+    [Header("Player Values")]
     [SerializeField] private Rigidbody rb;
     public float forwardSpeed;
     public float sideSpeed;
     public float maxSpeed;
     public float jumpForce;
-    public float fallDistanceBeforeDeath = 10f;
-    public GameObject currentPlatform;
-    public bool isGrounded;
-    public bool isAlive;
-    public bool isInvincible;
-    public ColourShift cs;
-    public PlayerDeath died;
     float horizontalMove;
+    [SerializeField] private float rotationStraightenSpeed = 1.0f; // Speed of straightening
+    private float currentYRotation;
+
+    [Header("Death Handling")]
+    public PlayerDeath died;
+    public bool isAlive;
+    public float fallDistanceBeforeDeath = 10f;
+
+    [Header("Checks")]
+    public GameObject currentPlatform;
     [SerializeField] private string currentGroundTag = ""; // Store the tag of the ground we're on
+    public bool isGrounded;
+    public bool isInvincible;
+
+    [Header("Colour Shifting")]
+    public ColourShift cs;
+
+    [Header("User Status")]
+    public bool userOnMenu;
+    public bool hasGameplayStarted;
 
     [Header("Mobile Stuff")]
     public bool moveLeft;
@@ -72,6 +87,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        if (!hasGameplayStarted) return;
         if (isMobileControls) MovePlayer();
         if (Input.GetKeyDown(KeyCode.M) && isGrounded)
         {
@@ -82,12 +98,13 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (!hasGameplayStarted) return;
         if (!isMobileControls) horizontalMove = Input.GetAxis("Horizontal");
         Vector3 velocity = rb.velocity;
 
         rb.AddForce(0, 0, forwardSpeed);
         if (!isMobileControls) rb.AddForce(horizontalMove * sideSpeed, 0, 0);
-        if (isMobileControls)  rb.AddForce(horizontalMove, 0, 0);
+        if (isMobileControls) rb.AddForce(horizontalMove, 0, 0);
 
         if (velocity.z > maxSpeed)
         {
@@ -95,6 +112,17 @@ public class PlayerMovement : MonoBehaviour
             velocity.x = rb.velocity.x;
         }
         rb.velocity = velocity;
+
+        // Capture player's current Y rotation
+        currentYRotation = transform.rotation.eulerAngles.y;
+
+        // Check if the player has spun and isn't at zero Y rotation
+        if (currentYRotation != 0)
+        {
+            // Gradually lerp back to a neutral Y rotation (Quaternion.identity)
+            Quaternion targetRotation = Quaternion.Euler(transform.rotation.eulerAngles.x, 0, transform.rotation.eulerAngles.z);
+            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * rotationStraightenSpeed);
+        }
 
         // Continuously check if player and ground colors match after collision
         if (!isPlaytesting && !string.IsNullOrEmpty(currentGroundTag))
@@ -105,19 +133,19 @@ public class PlayerMovement : MonoBehaviour
 
     private void CheckColorMismatch()
     {
-        Debug.Log($"Current Ground Tag: {currentGroundTag}, Player Colour Index: {cs.colourIndex}");
+        Debug.Log($"Current Ground Tag: {currentGroundTag}, Player Is Blue: {cs.isBlue}");
 
         if (!isInvincible) // Only check when not invincible
         {
             // Check for color mismatches
-            if (currentGroundTag == "Blue" && cs.colourIndex != 0)
+            if (currentGroundTag == "Blue" && cs.isPink)
             {
                 Debug.Log("Player is pink on blue ground. Triggering death.");
                 maxSpeed = 0;
                 isAlive = false;
                 died.TriggerDeath();
             }
-            else if (currentGroundTag == "Pink" && cs.colourIndex != 1)
+            else if (currentGroundTag == "Pink" && cs.isBlue)
             {
                 Debug.Log("Player is blue on pink ground. Triggering death.");
                 maxSpeed = 0;

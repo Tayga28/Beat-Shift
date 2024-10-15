@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class RotatingBox : MonoBehaviour
 {
-    public GameObject box;
+    GameObject box;
     public float rotSpeed;
+    public bool clockwise;
+    public bool chooseRandomDirection;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        box = this.gameObject;
     }
 
     // Update is called once per frame
@@ -21,6 +23,21 @@ public class RotatingBox : MonoBehaviour
 
     void RotateBox(float _speed) 
     {
-        box.transform.Rotate(0, 5 * _speed * Time.deltaTime, 0, Space.Self);
+        if(!chooseRandomDirection)
+        {
+            if(clockwise) box.transform.Rotate(0, 5 * _speed * Time.deltaTime, 0, Space.Self);
+            if(!clockwise) box.transform.Rotate(0, -5 * _speed * Time.deltaTime, 0, Space.Self);
+        } else if (chooseRandomDirection)
+        {
+            int rando = Random.Range(1, 2);
+            if (rando == 1)
+            {
+                box.transform.Rotate(0, 5 * _speed * Time.deltaTime, 0, Space.Self);
+            } else if (rando == 2)
+            {
+                box.transform.Rotate(0, -5 * _speed * Time.deltaTime, 0, Space.Self);
+            }
+        }
+        
     }
 }

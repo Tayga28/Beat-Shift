@@ -13,7 +13,7 @@ public class PlatformFragment : MonoBehaviour
     private PlayerMovement player;
 
     [Header("Reveal and Shift Values")]
-    [SerializeField] private float revealDistance = 28f; // Distance within which the material is revealed
+    private float revealDistance = 28f; // Distance within which the material is revealed
     private Renderer platformRenderer; // Renderer of the platform
     private Material currentMaterial; // Current material of the platform
     [SerializeField] private bool isChangingColor; // To prevent multiple color changes at once
@@ -144,12 +144,13 @@ public class PlatformFragment : MonoBehaviour
         // After color fully switches
         isBlue = !isBlue;
         isPink = !isPink;
-        UpdateTag(); // Update tag after color change
+        UpdateTag();
 
         // Delay invincibility slightly
-        yield return new WaitForSeconds(0.5f); // Small delay after color switch
+        yield return new WaitForSeconds(1f); // Small delay after color switch
 
         player.isInvincible = false; // End invincibility after all changes
+        //UpdateTag(); // Update tag after color change
     }
 
     private void UpdateTag()
@@ -162,7 +163,7 @@ public class PlatformFragment : MonoBehaviour
         {
             this.tag = "Pink";
         }
-        Debug.Log(this.tag);
+        //Debug.Log(this.tag);
     }
 
     private void OnTriggerEnter(Collider other)

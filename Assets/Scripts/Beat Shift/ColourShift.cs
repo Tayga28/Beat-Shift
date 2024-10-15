@@ -26,7 +26,7 @@ public class ColourShift : MonoBehaviour
 
         playerMaterial.color = blueColor; // Set initial color to blue
         isBlue = true;                     // Initialize to blue
-        colourIndex = 0;                  // Set initial colour index
+        //colourIndex = 0;                  // Set initial colour index
     }
 
     void Update()
@@ -54,7 +54,7 @@ public class ColourShift : MonoBehaviour
             isBlue = false;
             startColor = blueColor;
             targetColor = pinkColor;
-            colourIndex = 1; // Immediately set to pink for accurate collision checks
+            //colourIndex = 1; // Immediately set to pink for accurate collision checks
         }
         else if (isPink)
         {
@@ -62,7 +62,7 @@ public class ColourShift : MonoBehaviour
             isPink = false;
             startColor = pinkColor;
             targetColor = blueColor;
-            colourIndex = 0; // Immediately set to blue for accurate collision checks
+            //colourIndex = 0; // Immediately set to blue for accurate collision checks
         }
 
         lerpTime = 0; // Reset lerp time

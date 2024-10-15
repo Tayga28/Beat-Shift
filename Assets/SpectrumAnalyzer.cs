@@ -23,12 +23,12 @@ public class SpectrumAnalyzer : MonoBehaviour
     private bool isBeatDetected; // Track if a beat is detected
     public float beatInterval = 0.5f; // Minimum interval between beats
     private float lastBeatTime; // Track the last beat time
+    private bool hasSpawnedPillarsYet = false;
 
 
     void Start()
     {
-        isBuilding = true;
-        CreatePillarsByShapes();
+        hasSpawnedPillarsYet = false;
     }
 
     private void CreatePillarsByShapes()
@@ -54,6 +54,13 @@ public class SpectrumAnalyzer : MonoBehaviour
 
     void Update()
     {
+        if(player.userOnMenu) return;
+        if(player.hasGameplayStarted && !hasSpawnedPillarsYet)
+        {
+            isBuilding = true;
+            CreatePillarsByShapes();
+            hasSpawnedPillarsYet = true;
+        } 
         if (Input.GetKey(KeyCode.R)) Rebuild();
         if (isBuilding) return;
 
