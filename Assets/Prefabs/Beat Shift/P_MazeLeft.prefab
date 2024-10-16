@@ -717,6 +717,11 @@ MonoBehaviour:
   fragmentID: 5
   isBlue: 0
   isPink: 1
+  isChangingColor: 0
+  hasRevealedColor: 0
+  nextToggleTime: 0
+  toggleIntervals: 8
+  toggleDelayAfterReveal: 2
   enableCameraShake: 1
   shakeDuration: 0.2
   shakeMagnitude: 0.1
@@ -739,7 +744,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 50, z: 1.1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8904938914609008485
 GameObject:

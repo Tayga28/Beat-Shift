@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1601146604095888259}
   - component: {fileID: 1791267828761005552}
   - component: {fileID: 5435497856581914900}
+  - component: {fileID: 3699814106742674776}
   m_Layer: 0
   m_Name: StartPlatform
   m_TagString: Pink
@@ -121,7 +122,6 @@ MonoBehaviour:
   fragmentID: 10
   isBlue: 0
   isPink: 1
-  revealDistance: 28
   isChangingColor: 0
   hasRevealedColor: 0
   nextToggleTime: 0
@@ -130,6 +130,27 @@ MonoBehaviour:
   enableCameraShake: 1
   shakeDuration: 0.2
   shakeMagnitude: 0.1
+--- !u!65 &3699814106742674776
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 721240447952859661}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 50, z: 1.1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3322996198383441456
 GameObject:
   m_ObjectHideFlags: 0

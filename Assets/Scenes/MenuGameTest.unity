@@ -824,7 +824,7 @@ Transform:
   m_GameObject: {fileID: 334079768}
   serializedVersion: 2
   m_LocalRotation: {x: 0.043619405, y: 0, z: 0, w: 0.9990483}
-  m_LocalPosition: {x: 0, y: 52, z: -38}
+  m_LocalPosition: {x: 0, y: 54.4, z: -38.38}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -842,11 +842,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 634be54bfd3cecb468e17c10af1503a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 2081987023}
   target: {fileID: 1632315664}
   offset: {x: 0, y: 2, z: -4}
   smoothSpeed: 90
   zoomDuration: 0.5
-  zoomedOffset: {x: 0, y: 0, z: -0.8}
+  zoomedOffset: {x: 0, y: 0, z: -0.9}
   tiltedRotation: {x: 0, y: 0, z: 30}
   targetFOV: 40
 --- !u!114 &334079773
@@ -993,8 +994,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 60
+  m_fontSizeBase: 60
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1471,6 +1472,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ee1257d5b11a624d9da4d36beba88db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameManager: {fileID: 2081987023}
   player: {fileID: 1632315666}
   buttons:
   - {fileID: 630673856}
@@ -1490,6 +1492,7 @@ GameObject:
   - component: {fileID: 1334402700}
   - component: {fileID: 1334402704}
   - component: {fileID: 1334402701}
+  - component: {fileID: 1334402705}
   m_Layer: 0
   m_Name: AudioAnalyser
   m_TagString: Untagged
@@ -1508,7 +1511,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 28146aadb1007d5409b4f353b985efee, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
@@ -1602,7 +1605,7 @@ Transform:
   m_GameObject: {fileID: 1334402696}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 9.04}
+  m_LocalPosition: {x: 0, y: 0, z: 9.04}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1636,8 +1639,8 @@ MonoBehaviour:
       CylPrefab: {fileID: 101714, guid: cdf4daedf7c625947a1f96d9c5a9b3f4, type: 3}
       BoxPrefab: {fileID: 162950, guid: 7f2727ce1a5a9d242b7368e8fffbe615, type: 3}
   player: {fileID: 1632315666}
-  beatThreshold: 0.1
-  beatInterval: 0.5
+  isAllowedColourToggle: 0
+  beatInterval: 0.25
 --- !u!114 &1334402701
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1660,13 +1663,37 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1334402696}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 80013f7094c2e2e4ab029ad8dd3e6d19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   audio: {fileID: 1334402698}
   player: {fileID: 1632315666}
+  musicIsPlaying: 0
+--- !u!164 &1334402705
+AudioReverbFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1334402696}
+  m_Enabled: 0
+  m_DryLevel: 0
+  m_Room: 0
+  m_RoomHF: 0
+  m_DecayTime: 1
+  m_DecayHFRatio: 0.5
+  m_ReflectionsLevel: -10000
+  m_ReverbLevel: 0
+  m_ReverbDelay: 0.04
+  m_Diffusion: 100
+  m_Density: 100
+  m_HFReference: 5000
+  m_RoomLF: 0
+  m_LFReference: 250
+  m_ReflectionsDelay: 0
+  m_ReverbPreset: 27
 --- !u!1 &1402274831
 GameObject:
   m_ObjectHideFlags: 0
@@ -1678,12 +1705,11 @@ GameObject:
   - component: {fileID: 1402274832}
   - component: {fileID: 1402274837}
   - component: {fileID: 1402274836}
-  - component: {fileID: 1402274835}
   - component: {fileID: 1402274834}
   - component: {fileID: 1402274833}
   m_Layer: 0
   m_Name: GameStart
-  m_TagString: Blue
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1745,29 +1771,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1402274835
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1402274831}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6235e52233724ab42b7bb0a4f2f4e7be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fragmentID: 0
-  isBlue: 1
-  isPink: 0
-  isChangingColor: 0
-  hasRevealedColor: 0
-  nextToggleTime: 0
-  toggleIntervals: 8
-  toggleDelayAfterReveal: 2
-  enableCameraShake: 1
-  shakeDuration: 0.2
-  shakeMagnitude: 0.1
 --- !u!23 &1402274836
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2122,7 +2125,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -255}
-  m_SizeDelta: {x: 342.9, y: 95.2}
+  m_SizeDelta: {x: 386.37, y: 119.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1618993071
 MonoBehaviour:
@@ -2297,7 +2300,7 @@ MeshRenderer:
   m_GameObject: {fileID: 1632315659}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
@@ -2371,8 +2374,9 @@ MonoBehaviour:
   pinkColor: {r: 0.89019614, g: 0.20784315, b: 0.4901961, a: 1}
   isBlue: 0
   isPink: 0
-  colourIndex: 0
   lerpDuration: 0.1
+  isLerping: 0
+  isSwitchingDuringDeath: 0
 --- !u!114 &1632315666
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2390,15 +2394,18 @@ MonoBehaviour:
   forwardSpeed: 10
   sideSpeed: 35
   maxSpeed: 10
-  jumpForce: 5
+  jumpForce: 6.5
   rotationStraightenSpeed: 1
   died: {fileID: 2081987022}
   isAlive: 0
+  isDying: 0
   fallDistanceBeforeDeath: 10
   currentPlatform: {fileID: 0}
   currentGroundTag: 
   isGrounded: 0
   isInvincible: 0
+  checkingForFirstContact: 0
+  madeFirstContactWithLevel: 0
   cs: {fileID: 1632315665}
   userOnMenu: 0
   hasGameplayStarted: 0
@@ -2515,7 +2522,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 1334402698}
-  reverbFilter: {fileID: 0}
+  reverbFilter: {fileID: 1334402705}
   deathScreenPanel: {fileID: 282566365}
   scoreUI: {fileID: 1447575212}
   score: {fileID: 1447575213}
@@ -2536,6 +2543,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2119243d3f6c5f41b586f337a9fc268, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  menuMode: 0
+  gameMode: 0
 --- !u!1 &1468734560155643521
 GameObject:
   m_ObjectHideFlags: 0
