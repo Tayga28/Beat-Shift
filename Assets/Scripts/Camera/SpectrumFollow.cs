@@ -7,21 +7,25 @@ public class SpectrumFollow : MonoBehaviour
     public PlayerMovement player;
     public Transform target; // The player
     public float smoothSpeed = 0.125f; // Smoothing factor for movement
-    //public Vector3 offset;
 
     private void FixedUpdate()
     {
         if (player.madeFirstContactWithLevel)
         {
-            // The spectrogram should follow the player’s Y and Z positions, but keep its X position fixed.
-            Vector3 desiredPosition = new Vector3(transform.position.x, target.position.y, target.position.z);
+            // Start with the desired position only following z position
+            Vector3 desiredPosition = new Vector3(transform.position.x, transform.position.y, target.position.z - 12);
 
-            // Smooth the transition
-            Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.deltaTime);
+            // If the player is grounded, update the y position to follow the player
+            if (player.isGrounded)
+            {
+                desiredPosition.y = target.position.y;
+            }
 
-            // Apply the new position
+            // Smoothly transition to the desired position
+            Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed * Time.fixedDeltaTime);
+
+            // Apply the smoothed position
             transform.position = smoothedPosition;
         }
-
     }
 }

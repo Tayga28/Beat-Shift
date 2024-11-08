@@ -31,7 +31,7 @@ public class ColourShift : MonoBehaviour
 
     void Update()
     {
-        if (movement.isAlive)
+        if (movement.hasGameplayStarted && movement.isAlive)
         {
             if (Input.GetKeyDown(KeyCode.Space) && !isLerping && !movement.isMobileControls)
             {

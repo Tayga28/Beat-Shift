@@ -13,9 +13,15 @@ public class PlayerMovement : MonoBehaviour
     public float sideSpeed;
     public float maxSpeed;
     public float jumpForce;
+    public float gravityValue;
+    public bool isJumping = false;
+    public bool hasLanded = false;
     float horizontalMove;
     [SerializeField] private float rotationStraightenSpeed = 1.0f; // Speed of straightening
     private float currentYRotation;
+    public BoxCollider boxCol;
+    public SphereCollider sphereCol;
+    public Vector3 velocityBeforeJumping;
 
     [Header("Death Handling")]
     public PlayerDeath died;
@@ -49,6 +55,8 @@ public class PlayerMovement : MonoBehaviour
         isAlive = true;
         checkingForFirstContact = true;
         madeFirstContactWithLevel = false;
+        boxCol.enabled = true;
+        sphereCol.enabled = false;
         maxSpeed = Mathf.Min(forwardSpeed, maxSpeed);
     }
 
@@ -71,21 +79,18 @@ public class PlayerMovement : MonoBehaviour
     {
         moveRight = false;
     }
+
     private void MovePlayer() // Mobile Controls
     {
         if (moveLeft)
         {
-            horizontalMove = -sideSpeed;
+            horizontalMove = -sideSpeed ;
         }
         else if (moveRight)
         {
             horizontalMove = sideSpeed;
         }
-        else if (!moveLeft)
-        {
-            horizontalMove = 0;
-        }
-        else if (!moveRight)
+        else
         {
             horizontalMove = 0;
         }
@@ -94,12 +99,33 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         if (!hasGameplayStarted) return;
+
         if (isMobileControls) MovePlayer();
-        if (Input.GetKeyDown(KeyCode.M) && isGrounded)
+
+        // Check for jump input and if the player is grounded
+        if (Input.GetKeyDown(KeyCode.F) && isGrounded)
         {
-            rb.AddForce(0, 1 * jumpForce, 0, ForceMode.Impulse);
-            isGrounded = false;
+            velocityBeforeJumping = rb.velocity;
+            isJumping = true;
+            hasLanded = false;
+            Jump();
         }
+
+    }
+
+
+    private void Jump()
+    {
+        if(isJumping){
+            // Set vertical velocity for jump
+            //rb.velocity = new Vector3(rb.velocity.x, jumpForce, rb.velocity.z); // Set Y velocity for jump
+            rb.AddForce(0, jumpForce, forwardSpeed * 2, ForceMode.Impulse);
+            //rb.AddForce(Vector3.forward * forwardSpeed, ForceMode.VelocityChange); // Maintain forward speed
+            isGrounded = false; // Set grounded to false since we are jumping
+
+            //isJumping = false;
+        }
+        
     }
 
     void FixedUpdate()
@@ -109,8 +135,10 @@ public class PlayerMovement : MonoBehaviour
         Vector3 velocity = rb.velocity;
 
         rb.AddForce(0, 0, forwardSpeed);
-        if (!isMobileControls) rb.AddForce(horizontalMove * sideSpeed, 0, 0);
-        if (isMobileControls) rb.AddForce(horizontalMove, 0, 0);
+        if(hasLanded) rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, Mathf.Max(velocityBeforeJumping.z, rb.velocity.z));
+        //rb.AddForce(Vector3.down * gravityValue);
+        if(!isMobileControls) rb.AddForce(horizontalMove * sideSpeed, 0, 0);
+        if(isMobileControls) rb.AddForce(horizontalMove, 0, 0);
 
         if (velocity.z > maxSpeed)
         {
@@ -118,6 +146,21 @@ public class PlayerMovement : MonoBehaviour
             velocity.x = rb.velocity.x;
         }
         rb.velocity = velocity;
+
+        if (!isGrounded)
+        {
+            rb.AddForce(Vector3.down * gravityValue, ForceMode.Acceleration);
+        }
+       
+
+        // Raycast ground check
+        CheckIfGrounded();
+
+        // Continuously check if player and ground colors match after collision
+        if (!isPlaytesting && !string.IsNullOrEmpty(currentGroundTag))
+        {
+            CheckColorMismatch();
+        }
 
         // Capture player's current Y rotation
         currentYRotation = transform.rotation.eulerAngles.y;
@@ -129,13 +172,27 @@ public class PlayerMovement : MonoBehaviour
             Quaternion targetRotation = Quaternion.Euler(transform.rotation.eulerAngles.x, 0, transform.rotation.eulerAngles.z);
             transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * rotationStraightenSpeed);
         }
-
-        // Continuously check if player and ground colors match after collision
-        if (!isPlaytesting && !string.IsNullOrEmpty(currentGroundTag))
-        {
-            CheckColorMismatch();
-        }
         CheckFallDeath();
+    }
+
+    private void CheckIfGrounded()
+    {
+        float raycastDistance = 0.51f; // Distance for ground detection
+        RaycastHit hit;
+
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, raycastDistance))
+        {
+            if(isJumping){
+                hasLanded = true;
+            }
+            isJumping = false;
+            isGrounded = true;
+            platformYPosition = hit.collider.gameObject.transform.position.y;
+        }
+        else
+        {
+            isGrounded = false;
+        }
     }
 
     void CheckColorMismatch()
@@ -163,8 +220,8 @@ public class PlayerMovement : MonoBehaviour
     void TriggerDelayedDeath()
     {
         if (!isAlive || !isDying) return; // Prevent triggering death multiple times
-        maxSpeed = 0;
         died.TriggerDeath();
+        maxSpeed = 0;
         rb.constraints = RigidbodyConstraints.FreezeAll;
         isAlive = false;
         isDying = false; // Reset dying flag after death is triggered
@@ -175,15 +232,14 @@ public class PlayerMovement : MonoBehaviour
         if (!isAlive || isDying) return; // Don't check if already dead or dying
 
         float playerYPosition = transform.position.y;
-        
+
         // If player falls below the platform by more than the threshold distance
-        if (playerYPosition < platformYPosition - fallDistanceBeforeDeath)
+        if (playerYPosition < platformYPosition - fallDistanceBeforeDeath && madeFirstContactWithLevel)
         {
             isDying = true; // Mark as dying
             Invoke("TriggerDelayedDeath", 0.5f); // Add delay for visual effect
         }
     }
-
 
     public void UpdateGroundTag(string newTag)
     {
@@ -192,10 +248,9 @@ public class PlayerMovement : MonoBehaviour
 
     void OnCollisionEnter(Collision other)
     {
-        isGrounded = true;
         platformYPosition = currentPlatform.transform.position.y; // Store platform Y position
         CheckColorMismatch();
-
+        
         if (!isPlaytesting)
         {
             if (other.gameObject.CompareTag("Blue"))
@@ -244,7 +299,6 @@ public class PlayerMovement : MonoBehaviour
 
     void OnCollisionExit(Collision other)
     {
-        isGrounded = false;
         if (other.gameObject.CompareTag("Blue") || other.gameObject.CompareTag("Pink"))
         {
             currentGroundTag = "";

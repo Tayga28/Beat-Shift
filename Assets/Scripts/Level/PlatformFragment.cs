@@ -14,7 +14,7 @@ public class PlatformFragment : MonoBehaviour
     private SpectrumAnalyzer spectrum;
 
     [Header("Reveal and Shift Values")]
-    private float revealDistance = 28f; // Distance within which the material is revealed
+    public float revealDistance = 28f; // Distance within which the material is revealed
     private Renderer platformRenderer; // Renderer of the platform
     private Material currentMaterial; // Current material of the platform
     [SerializeField] private bool isChangingColor; // To prevent multiple color changes at once
@@ -177,6 +177,12 @@ public class PlatformFragment : MonoBehaviour
                 player.madeFirstContactWithLevel = true;
                 player.checkingForFirstContact = false; 
             }
+            if(fragmentID == 11 || fragmentID == 12)
+            {
+                player.forwardSpeed = 30f;
+                player.sphereCol.enabled = true;
+                player.boxCol.enabled = false;
+            }
             // Update the player's current platform to this platform's parent
             player.currentPlatform = this.transform.parent.gameObject;
 
@@ -190,6 +196,12 @@ public class PlatformFragment : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            if(fragmentID == 11 || fragmentID == 12)
+            {
+                player.forwardSpeed = 10f;
+                player.boxCol.enabled = true;
+                player.sphereCol.enabled = false;
+            }
             this.GetComponent<PlatformFragment>().enabled = false;
         }
     }

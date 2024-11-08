@@ -71,10 +71,10 @@
     <Compile Include="Library\PackageCache\com.unity.probuilder@5.2.3\Editor\EditorCore\RepairActions.cs" />
     <Compile Include="Library\PackageCache\com.unity.probuilder@5.2.3\Editor\EditorCore\Lightmapping.cs" />
     <Compile Include="Library\PackageCache\com.unity.probuilder@5.2.3\Editor\EditorCore\EditorGUILayout.cs" />
-    <Compile Include="Library\PackageCache\com.unity.probuilder@5.2.3\Editor\EditorCore\IHasPreferences.cs" />
     <Compile Include="Library\PackageCache\com.unity.probuilder@5.2.3\Editor\EditorCore\ScriptingSymbolManager.cs" />
     <Compile Include="Library\PackageCache\com.unity.probuilder@5.2.3\Editor\EditorCore\pb_ObjectArray.cs" />
     <Compile Include="Library\PackageCache\com.unity.probuilder@5.2.3\Editor\MenuActions\Geometry\SetPivotToSelection.cs" />
+    <Compile Include="Library\PackageCache\com.unity.probuilder@5.2.3\Editor\EditorCore\IHasPreferences.cs" />
     <Compile Include="Library\PackageCache\com.unity.probuilder@5.2.3\Editor\EditorCore\AssemblyInfo.cs" />
     <Compile Include="Library\PackageCache\com.unity.probuilder@5.2.3\Editor\EditorCore\ToolbarGroup.cs" />
     <Compile Include="Library\PackageCache\com.unity.probuilder@5.2.3\Editor\MenuToggles\Geometry\CutToolToggle.cs" />
