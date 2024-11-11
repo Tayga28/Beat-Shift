@@ -29,41 +29,42 @@ public class CameraFollow : MonoBehaviour
     }
 
     private IEnumerator ZoomOutInNewScene()
-{
-    // Store the current position and field of view
-    Vector3 initialPosition = transform.position;
-    float initialFOV = camera.fieldOfView;
-
-    // Calculate the target position for the camera (target's position + offset)
-    Vector3 targetPosition = target.position + offset;
-
-    // Duration of the zoom-out effect (adjust this as needed)
-    float timeElapsed = 0f;
-    float zoomDuration = 1f; // Duration of the zoom-out effect
-
-    // Smoothly transition to the target position and field of view
-    while (timeElapsed < zoomDuration)
     {
-        // Lerp the position and field of view
-        transform.position = Vector3.Lerp(initialPosition, targetPosition, timeElapsed / zoomDuration);
-        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(5, 0, 0), timeElapsed/zoomDuration);
-        camera.fieldOfView = Mathf.Lerp(initialFOV, zoomedOutFOV, timeElapsed / zoomDuration);
+        // Store the current position and field of view
+        Vector3 initialPosition = transform.position;
+        float initialFOV = camera.fieldOfView;
 
-        // Increment time
-        timeElapsed += Time.deltaTime;
-        yield return null;
+        // Calculate the target position for the camera (target's position + offset)
+        Vector3 targetPosition = target.position + offset;
+
+        // Duration of the zoom-out effect (adjust this as needed)
+        float timeElapsed = 0f;
+        float zoomDuration = 1f; // Duration of the zoom-out effect
+
+        // Smoothly transition to the target position and field of view
+        while (timeElapsed < zoomDuration)
+        {
+            // Lerp the position and field of view
+            transform.position = Vector3.Lerp(initialPosition, targetPosition, timeElapsed / zoomDuration);
+            //transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(5, 0, 0), timeElapsed/zoomDuration);
+            camera.fieldOfView = Mathf.Lerp(initialFOV, zoomedOutFOV, timeElapsed / zoomDuration);
+
+            // Increment time
+            timeElapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        // Ensure the camera ends at the target position and field of view
+        
+        //transform.position = targetPosition;
+        //transform.rotation = Quaternion.Euler(5, 0, 0);
+        camera.fieldOfView = zoomedOutFOV;
+        
+        hasZoomedOut = true;
+        // If needed, you can set the camera's rotation here (for example, reset to follow the target)
+        //transform.LookAt(target);
+        
     }
-
-    // Ensure the camera ends at the target position and field of view
-    transform.position = targetPosition;
-    transform.rotation = Quaternion.Euler(5, 0, 0);
-    camera.fieldOfView = zoomedOutFOV;
-    
-
-    // If needed, you can set the camera's rotation here (for example, reset to follow the target)
-    //transform.LookAt(target);
-    hasZoomedOut = true;
-}
 
 
     private void FixedUpdate()

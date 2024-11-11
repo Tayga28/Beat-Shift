@@ -61,12 +61,13 @@ public class UIHandler : MonoBehaviour
 
     public void StartButtonPressed()
     {
+        startButton.gameObject.SetActive(false);
+        title.gameObject.SetActive(false);
         menuCamera.OnPlayButtonPressed();
         player.userOnMenu = false;
         gameManager.menuMode = false;
         gameManager.gameMode = true;
         player.hasGameplayStarted = true;
-        startButton.gameObject.SetActive(false);
-        title.gameObject.SetActive(false);
+        
     }
 }

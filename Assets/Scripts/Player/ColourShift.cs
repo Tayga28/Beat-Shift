@@ -37,8 +37,10 @@ public class ColourShift : MonoBehaviour
             {
                 StartColorSwitch();
             }
-            if (movement.isMobileControls && movement.moveLeft && movement.moveRight && !isLerping) StartColorSwitch();
-
+            if (movement.isMobileControls && movement.moveLeft && movement.moveRight && !isLerping) 
+            {
+                StartColorSwitch();
+            }
             if (isLerping)
             {
                 ContinueLerp();

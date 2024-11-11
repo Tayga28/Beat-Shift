@@ -916,7 +916,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -192.3}
-  m_SizeDelta: {x: 723.7, y: 352.8}
+  m_SizeDelta: {x: 952.6, y: 352.8}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1116187923
 MonoBehaviour:
@@ -942,8 +942,8 @@ MonoBehaviour:
 
     Rush'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: d3701784f317bc740b2b20d25b6b4061, type: 2}
-  m_sharedMaterial: {fileID: -8687618505885142048, guid: d3701784f317bc740b2b20d25b6b4061, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 67f55949c703fb942904e861aabaa191, type: 2}
+  m_sharedMaterial: {fileID: 3913521370919406878, guid: 67f55949c703fb942904e861aabaa191, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -967,8 +967,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 196.6
-  m_fontSizeBase: 196.6
+  m_fontSize: 195.02
+  m_fontSizeBase: 195.02
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

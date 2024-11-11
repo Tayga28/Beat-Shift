@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public CameraFollow cam;
     public bool menuMode;
     public bool gameMode;
 
@@ -15,7 +16,8 @@ public class GameManager : MonoBehaviour
     }
     
     public void RestartGame()
-    {
+    {   
+        //cam = FindAnyObjectByType<CameraFollow>();
         SceneManager.LoadScene(0);
     }
     // Ensure to subscribe to the scene loaded event when the game starts
@@ -47,6 +49,7 @@ public class GameManager : MonoBehaviour
                 if (playerMovement != null)
                 {
                     playerMovement.enabled = true; // Make sure the movement script is enabled
+                    playerMovement.isPlaytesting = true;
                     playerMovement.hasGameplayStarted = true;
                     playerMovement.isMobileControls = true;
 

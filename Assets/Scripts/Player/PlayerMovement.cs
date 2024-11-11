@@ -90,7 +90,7 @@ public class PlayerMovement : MonoBehaviour
         {
             horizontalMove = sideSpeed;
         }
-        else
+        else if (!moveLeft && !moveRight || moveLeft && moveRight)
         {
             horizontalMove = 0;
         }

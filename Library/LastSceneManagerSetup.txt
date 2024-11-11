@@ -1,5 +1,6 @@
 sceneSetups:
-- path: Assets/Scenes/Menu.unity
+- path: Assets/Suggo Creations/RETROWAVE SKIES Lite/Demo Scenes/Orange_PresetScene
+    Lite.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

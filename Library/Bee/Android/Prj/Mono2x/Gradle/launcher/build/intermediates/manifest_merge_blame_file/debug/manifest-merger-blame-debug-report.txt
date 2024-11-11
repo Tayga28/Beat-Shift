@@ -1,0 +1,149 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.LambdaStudios.BeatShift"
+4    android:installLocation="preferExternal"
+5    android:versionCode="1"
+6    android:versionName="0.1" >
+7
+8    <uses-sdk
+9        android:minSdkVersion="30"
+9-->C:\Users\User\Desktop\TAYGA\Coding\Unity Projects\Beat Shift\Library\Bee\Android\Prj\Mono2x\Gradle\launcher\src\main\AndroidManifest.xml
+10        android:targetSdkVersion="35" />
+10-->C:\Users\User\Desktop\TAYGA\Coding\Unity Projects\Beat Shift\Library\Bee\Android\Prj\Mono2x\Gradle\launcher\src\main\AndroidManifest.xml
+11
+12    <supports-screens
+12-->C:\Users\User\Desktop\TAYGA\Coding\Unity Projects\Beat Shift\Library\Bee\Android\Prj\Mono2x\Gradle\launcher\src\main\AndroidManifest.xml:4:3-163
+13        android:anyDensity="true"
+13-->C:\Users\User\Desktop\TAYGA\Coding\Unity Projects\Beat Shift\Library\Bee\Android\Prj\Mono2x\Gradle\launcher\src\main\AndroidManifest.xml:4:135-160
+14        android:largeScreens="true"
+14-->C:\Users\User\Desktop\TAYGA\Coding\Unity Projects\Beat Shift\Library\Bee\Android\Prj\Mono2x\Gradle\launcher\src\main\AndroidManifest.xml:4:78-105
+15        android:normalScreens="true"
+15-->C:\Users\User\Desktop\TAYGA\Coding\Unity Projects\Beat Shift\Library\Bee\Android\Prj\Mono2x\Gradle\launcher\src\main\AndroidManifest.xml:4:49-77
+16        android:smallScreens="true"
+16-->C:\Users\User\Desktop\TAYGA\Coding\Unity Projects\Beat Shift\Library\Bee\Android\Prj\Mono2x\Gradle\launcher\src\main\AndroidManifest.xml:4:21-48
+17        android:xlargeScreens="true" />
+17-->C:\Users\User\Desktop\TAYGA\Coding\Unity Projects\Beat Shift\Library\Bee\Android\Prj\Mono2x\Gradle\launcher\src\main\AndroidManifest.xml:4:106-134
+18
+19    <uses-permission android:name="android.permission.INTERNET" />
+19-->[:unityLibrary] C:\Users\User\Desktop\TAYGA\Coding\Unity Projects\Beat Shift\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:8:5-67
+19-->[:unityLibrary] C:\Users\User\Desktop\TAYGA\Coding\Unity Projects\Beat Shift\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:8:22-64
+20
+21    <uses-feature android:glEsVersion="0x00030000" />
+21-->[:unityLibrary] C:\Users\User\Desktop\TAYGA\Coding\Unity Projects\Beat Shift\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:10:5-54
+21-->[:unityLibrary] C:\Users\User\Desktop\TAYGA\Coding\Unity Projects\Beat Shift\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:10:19-51
+22    <uses-feature
+22-->[:unityLibrary] C:\Users\User\Desktop\TAYGA\Coding\Unity Projects\Beat Shift\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:11:5-13:36
+23        android:name="android.hardware.vulkan.version"
+23-->[:unityLibrary] C:\Users\User\Desktop\TAYGA\Coding\Unity Projects\Beat Shift\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:12:9-55
+24        android:required="false" />
+24-->[:unityLibrary] C:\Users\User\Desktop\TAYGA\Coding\Unity Projects\Beat Shift\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:13:9-33
+25    <uses-feature
+25-->[:unityLibrary] C:\Users\User\Desktop\TAYGA\Coding\Unity Projects\Beat Shift\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:14:5-16:36
+26        android:name="android.hardware.touchscreen"
+26-->[:unityLibrary] C:\Users\User\Desktop\TAYGA\Coding\Unity Projects\Beat Shift\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:15:9-52
+27        android:required="false" />
+27-->[:unityLibrary] C:\Users\User\Desktop\TAYGA\Coding\Unity Projects\Beat Shift\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:16:9-33
+28    <uses-feature
+28-->[:unityLibrary] C:\Users\User\Desktop\TAYGA\Coding\Unity Projects\Beat Shift\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:17:5-19:36
+29        android:name="android.hardware.touchscreen.multitouch"
+29-->[:unityLibrary] C:\Users\User\Desktop\TAYGA\Coding\Unity Projects\Beat Shift\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:18:9-63
+30        android:required="false" />
+30-->[:unityLibrary] C:\Users\User\Desktop\TAYGA\Coding\Unity Projects\Beat Shift\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:19:9-33
+31    <uses-feature
+31-->[:unityLibrary] C:\Users\User\Desktop\TAYGA\Coding\Unity Projects\Beat Shift\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:20:5-22:36
+32        android:name="android.hardware.touchscreen.multitouch.distinct"
+32-->[:unityLibrary] C:\Users\User\Desktop\TAYGA\Coding\Unity Projects\Beat Shift\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:21:9-72
+33        android:required="false" />
+33-->[:unityLibrary] C:\Users\User\Desktop\TAYGA\Coding\Unity Projects\Beat Shift\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:22:9-33
+34
+35    <application
+35-->C:\Users\User\Desktop\TAYGA\Coding\Unity Projects\Beat Shift\Library\Bee\Android\Prj\Mono2x\Gradle\launcher\src\main\AndroidManifest.xml:3:3-83
+36        android:debuggable="true"
+37        android:extractNativeLibs="true"
+37-->[:unityLibrary] C:\Users\User\Desktop\TAYGA\Coding\Unity Projects\Beat Shift\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:24:18-50
+38        android:icon="@mipmap/app_icon"
+38-->C:\Users\User\Desktop\TAYGA\Coding\Unity Projects\Beat Shift\Library\Bee\Android\Prj\Mono2x\Gradle\launcher\src\main\AndroidManifest.xml:3:49-80
+39        android:label="@string/app_name" >
+39-->C:\Users\User\Desktop\TAYGA\Coding\Unity Projects\Beat Shift\Library\Bee\Android\Prj\Mono2x\Gradle\launcher\src\main\AndroidManifest.xml:3:16-48
+40        <meta-data
+40-->[:unityLibrary] C:\Users\User\Desktop\TAYGA\Coding\Unity Projects\Beat Shift\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:25:9-27:33
+41            android:name="unity.splash-mode"
+41-->[:unityLibrary] C:\Users\User\Desktop\TAYGA\Coding\Unity Projects\Beat Shift\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:26:13-45
+42            android:value="0" />
+42-->[:unityLibrary] C:\Users\User\Desktop\TAYGA\Coding\Unity Projects\Beat Shift\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:27:13-30
+43        <meta-data
+43-->[:unityLibrary] C:\Users\User\Desktop\TAYGA\Coding\Unity Projects\Beat Shift\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:28:9-30:36
+44            android:name="unity.splash-enable"
+44-->[:unityLibrary] C:\Users\User\Desktop\TAYGA\Coding\Unity Projects\Beat Shift\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:29:13-47
+45            android:value="True" />
+45-->[:unityLibrary] C:\Users\User\Desktop\TAYGA\Coding\Unity Projects\Beat Shift\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:30:13-33
+46        <meta-data
+46-->[:unityLibrary] C:\Users\User\Desktop\TAYGA\Coding\Unity Projects\Beat Shift\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:31:9-33:36
+47            android:name="unity.launch-fullscreen"
+47-->[:unityLibrary] C:\Users\User\Desktop\TAYGA\Coding\Unity Projects\Beat Shift\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:32:13-51
+48            android:value="True" />
+48-->[:unityLibrary] C:\Users\User\Desktop\TAYGA\Coding\Unity Projects\Beat Shift\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:33:13-33
+49        <meta-data
+49-->[:unityLibrary] C:\Users\User\Desktop\TAYGA\Coding\Unity Projects\Beat Shift\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:34:9-36:36
+50            android:name="unity.render-outside-safearea"
+50-->[:unityLibrary] C:\Users\User\Desktop\TAYGA\Coding\Unity Projects\Beat Shift\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:35:13-57
+51            android:value="True" />
+51-->[:unityLibrary] C:\Users\User\Desktop\TAYGA\Coding\Unity Projects\Beat Shift\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:36:13-33
+52        <meta-data
+52-->[:unityLibrary] C:\Users\User\Desktop\TAYGA\Coding\Unity Projects\Beat Shift\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:37:9-39:50
+53            android:name="notch.config"
+53-->[:unityLibrary] C:\Users\User\Desktop\TAYGA\Coding\Unity Projects\Beat Shift\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:38:13-40
+54            android:value="portrait|landscape" />
+54-->[:unityLibrary] C:\Users\User\Desktop\TAYGA\Coding\Unity Projects\Beat Shift\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:39:13-47
+55        <meta-data
+55-->[:unityLibrary] C:\Users\User\Desktop\TAYGA\Coding\Unity Projects\Beat Shift\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:40:9-42:36
+56            android:name="unity.auto-report-fully-drawn"
+56-->[:unityLibrary] C:\Users\User\Desktop\TAYGA\Coding\Unity Projects\Beat Shift\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:41:13-57
+57            android:value="true" />
+57-->[:unityLibrary] C:\Users\User\Desktop\TAYGA\Coding\Unity Projects\Beat Shift\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:42:13-33
+58
+59        <activity
+59-->[:unityLibrary] C:\Users\User\Desktop\TAYGA\Coding\Unity Projects\Beat Shift\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:44:9-65:20
+60            android:name="com.unity3d.player.UnityPlayerActivity"
+60-->[:unityLibrary] C:\Users\User\Desktop\TAYGA\Coding\Unity Projects\Beat Shift\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:45:13-66
+61            android:configChanges="mcc|mnc|locale|touchscreen|keyboard|keyboardHidden|navigation|orientation|screenLayout|uiMode|screenSize|smallestScreenSize|fontScale|layoutDirection|density"
+61-->[:unityLibrary] C:\Users\User\Desktop\TAYGA\Coding\Unity Projects\Beat Shift\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:46:13-194
+62            android:exported="true"
+62-->[:unityLibrary] C:\Users\User\Desktop\TAYGA\Coding\Unity Projects\Beat Shift\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:47:13-36
+63            android:hardwareAccelerated="false"
+63-->[:unityLibrary] C:\Users\User\Desktop\TAYGA\Coding\Unity Projects\Beat Shift\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:48:13-48
+64            android:launchMode="singleTask"
+64-->[:unityLibrary] C:\Users\User\Desktop\TAYGA\Coding\Unity Projects\Beat Shift\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:49:13-44
+65            android:resizeableActivity="false"
+65-->[:unityLibrary] C:\Users\User\Desktop\TAYGA\Coding\Unity Projects\Beat Shift\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:50:13-47
+66            android:screenOrientation="fullUser"
+66-->[:unityLibrary] C:\Users\User\Desktop\TAYGA\Coding\Unity Projects\Beat Shift\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:51:13-49
+67            android:theme="@style/UnityThemeSelector" >
+67-->[:unityLibrary] C:\Users\User\Desktop\TAYGA\Coding\Unity Projects\Beat Shift\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:52:13-54
+68            <intent-filter>
+68-->[:unityLibrary] C:\Users\User\Desktop\TAYGA\Coding\Unity Projects\Beat Shift\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:53:13-57:29
+69                <category android:name="android.intent.category.LAUNCHER" />
+69-->[:unityLibrary] C:\Users\User\Desktop\TAYGA\Coding\Unity Projects\Beat Shift\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:54:17-77
+69-->[:unityLibrary] C:\Users\User\Desktop\TAYGA\Coding\Unity Projects\Beat Shift\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:54:27-74
+70
+71                <action android:name="android.intent.action.MAIN" />
+71-->[:unityLibrary] C:\Users\User\Desktop\TAYGA\Coding\Unity Projects\Beat Shift\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:56:17-69
+71-->[:unityLibrary] C:\Users\User\Desktop\TAYGA\Coding\Unity Projects\Beat Shift\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:56:25-66
+72            </intent-filter>
+73
+74            <meta-data
+74-->[:unityLibrary] C:\Users\User\Desktop\TAYGA\Coding\Unity Projects\Beat Shift\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:59:13-61:40
+75                android:name="unityplayer.UnityActivity"
+75-->[:unityLibrary] C:\Users\User\Desktop\TAYGA\Coding\Unity Projects\Beat Shift\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:60:17-57
+76                android:value="true" />
+76-->[:unityLibrary] C:\Users\User\Desktop\TAYGA\Coding\Unity Projects\Beat Shift\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:61:17-37
+77            <meta-data
+77-->[:unityLibrary] C:\Users\User\Desktop\TAYGA\Coding\Unity Projects\Beat Shift\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:62:13-64:40
+78                android:name="notch_support"
+78-->[:unityLibrary] C:\Users\User\Desktop\TAYGA\Coding\Unity Projects\Beat Shift\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:63:17-45
+79                android:value="true" />
+79-->[:unityLibrary] C:\Users\User\Desktop\TAYGA\Coding\Unity Projects\Beat Shift\Library\Bee\Android\Prj\Mono2x\Gradle\unityLibrary\build\intermediates\merged_manifest\debug\AndroidManifest.xml:64:17-37
+80        </activity>
+81    </application>
+82
+83</manifest>

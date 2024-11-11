@@ -1,0 +1,20 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.LambdaStudios.BeatShift.launcher-mergeDebugResources-3:/values-v28/values-v28.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\User\\Desktop\\TAYGA\\Coding\\Unity Projects\\Beat Shift\\Library\\Bee\\Android\\Prj\\Mono2x\\Gradle\\unityLibrary\\build\\intermediates\\packaged_res\\debug\\values-v28\\values-v28.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "4",
+                        "endColumns": "8",
+                        "endOffsets": "229"
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -100,6 +100,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshSpawner.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
     <Compile Include="Assets\Scripts\Game Managing\ScoreKeeper.cs" />
+    <Compile Include="Assets\Suggo Creations\RETROWAVE SKIES Lite\Scripts\GetGlobalMatrixLite.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
     <Compile Include="Assets\Scripts\Level\BlocksHandler.cs" />
     <Compile Include="Assets\Scripts\Level\MovingBoxes.cs" />
@@ -119,6 +120,7 @@
     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Level\RotatingBox.cs" />
     <Compile Include="Assets\Scripts\Level\Spectogram\MathB.cs" />
+    <Compile Include="Assets\Suggo Creations\RETROWAVE SKIES Lite\Readme Assets\Scripts\ReadmeLite.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextInfoDebugTool.cs" />
     <Compile Include="Assets\Scripts\Menu\MenuOrbit.cs" />
     <Compile Include="Assets\Scripts\Level\SpawnParts.cs" />
@@ -139,6 +141,7 @@
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
+    <None Include="Assets\Suggo Creations\RETROWAVE SKIES Lite\Shaders\Includes\MainLight.hlsl" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
